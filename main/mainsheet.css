@@ -1,7 +1,17 @@
 * {
     color: black;
+    margin: 0;
+    padding: 0;
 }
-table, tr, td {
+#wrap {
+    width: 100%;
+    height: 100%;
+    margin: 5px 5px;
+    background-color: grey;
+}
+table,
+tr,
+td {
     border: 1px black solid;
     border-collapse: collapse;
 }
