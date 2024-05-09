@@ -1,3 +1,7 @@
 * {
     color: black;
 }
+table, tr, td {
+    border: 1px black solid;
+    border-collapse: collapse;
+}
