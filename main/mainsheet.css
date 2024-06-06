@@ -27,13 +27,16 @@ table {
 td {
     height: 40px;
 }
-#top_footer {
+footer>div {
     width: 80%;
-    margin: 5px auto;
+    margin: 0 auto 5px;
     height: 50px;
     text-align: center;
     line-height: 50px;
     position: relative;
+}
+#top_footer {
+    margin-top: 5px;
 }
 #top_footer>input {
     display: inline-block;
@@ -69,58 +72,65 @@ td {
     background-image: url("img/right_arrow_click.png");
     top: 60%;
 }
-#center_footer {
-    width: 80%;
-    margin: 0 auto;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-    position: relative;
-}
 #center_footer>button {
-    width: 0px;
     height: 100%;
+    width: 100px;
+    border-radius: 10px;
     display: inline-block;
     position: absolute;
     top: 0px;
+    text-align: center;
+    background-color: white;
+    border-style: none;
+    box-shadow: 0 4px 0 0 #717171;
 }
 #show_entire_button {
-    background-color: white;
-    border-style: none;
-    left: 0;
+    transform: translateX(-200%);
+}
+#show_entire_button:active {
+    box-shadow: 0 0 0 0 #717171;
+    transform: translate(-200%, 4px);
 }
 #show_word_button {
-    background-color: white;
-    border-style: none;
-    left: 0;
+    transform: translateX(-50%);
+}
+#show_word_button:active {
+    box-shadow: 0 0 0 0 #717171;
+    transform: translate(-50%, 4px);
 }
 #show_meaning_button {
-    background-color: white;
-    border-style: none;
-    left: 0;
+    transform: translateX(100%);
+}
+#show_meaning_button:active {
+    box-shadow: 0 0 0 0 #717171;
+    transform: translate(100%, 4px);
 }
 #bottom_footer {
-    width: 80%;
-    margin: 0 auto;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-    position: relative;
+    margin-top: 15px;
 }
 #bottom_footer>button {
-    width: 0px;
     height: 100%;
+    width: 100px;
+    border-radius: 10px;
     display: inline-block;
     position: absolute;
     top: 0px;
+    text-align: center;
+    background-color: white;
+    border-style: none;
+    box-shadow: 0 4px 0 0 #717171;
 }
 #refresh_button {
-    background-color: white;
-    border-style: none;
-    left: 0;
+    transform: translateX(25%);
 }
-#exam {
-    background-color: white;
-    border-style: none;
-    left: 0;
+#refresh_button:active {
+    box-shadow: 0 0 0 0 #717171;
+    transform: translate(25%, 4px);
+}
+#exam_button {
+    transform: translateX(-125%);
+}
+#exam_button:active {
+    box-shadow: 0 0 0 0 #717171;
+    transform: translate(-125%, 4px);
 }
