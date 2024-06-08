@@ -30,7 +30,7 @@ $(document).ready(function () {
                         word.push(tmp_str);
                         tmp_str = "";
                     } else if (index == '\n') {
-                        tmp_str = tmp_str.substr(0, tmp_str.length - 1);
+                        tmp_str = tmp_str;
                         meaning.push(tmp_str);
                         tmp_str = "";
                     } else
