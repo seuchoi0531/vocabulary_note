@@ -25,6 +25,7 @@ table {
     margin: 5px auto;
 }
 td {
+    width: 40%;
     height: 40px;
 }
 footer>div {
@@ -121,16 +122,16 @@ footer>div {
     box-shadow: 0 4px 0 0 #717171;
 }
 #refresh_button {
-    transform: translateX(25%);
+    transform: translateX(-125%);
 }
 #refresh_button:active {
     box-shadow: 0 0 0 0 #717171;
-    transform: translate(25%, 4px);
+    transform: translate(-125%, 4px);
 }
 #exam_button {
-    transform: translateX(-125%);
+    transform: translateX(25%);
 }
 #exam_button:active {
     box-shadow: 0 0 0 0 #717171;
-    transform: translate(-125%, 4px);
+    transform: translate(25%, 4px);
 }
