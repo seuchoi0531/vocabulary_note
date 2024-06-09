@@ -1,16 +1,18 @@
 $(document).ready(function () {
     var word = []; // word array
     var meaning = []; // meaning array
+    var total = [];
     var table = document.getElementsByTagName("td");
     var show_index = 0;
-    // 0: show_entire
+    var show_word_flag = true;
+    var show_meaning_flag = true;
+    // 0: show_both
     // 1: show_word
     // 2: show_meaning
 
     var page_index = 1;
     var total_index = 0;
     var txt_number = 1;
-    var tt = [];
 
     const basePath = '../voca/page';
     const fileExtension = '.txt';
@@ -23,7 +25,7 @@ $(document).ready(function () {
             dataType: 'text',
             success: function (data) {
                 var tmp_str = "";
-                tt.push(data);
+                total.push(data);
 
                 for (const index of data) {
                     if (index == '\t') {
@@ -77,11 +79,14 @@ $(document).ready(function () {
     // add event to button
     document.getElementById("right_arrow").addEventListener("click", page_up);
     document.getElementById("left_arrow").addEventListener("click", page_down);
-    document.getElementById("show_entire_button").addEventListener("click", show_entire);
-    document.getElementById("show_word_button").addEventListener("click", show_word);
-    document.getElementById("show_meaning_button").addEventListener("click", show_meaning);
+    document.getElementById("show_word_button").addEventListener("click", change_word_flag);
+    document.getElementById("show_meaning_button").addEventListener("click", change_meaning_flag);
     document.getElementById("refresh_button").addEventListener("click", refresh);
-
+    for (var index = 0; index < table.length; index++) {
+        if (index % 2 == 0) {
+            table[index].addEventListener("click", addClickEvents(index));
+        }
+    }
 
     function page_up() {
         if (page_index < total_index)
@@ -102,15 +107,11 @@ $(document).ready(function () {
     }
 
     function update_table() {
-        if (show_index == 0)
-            show_entire();
-        if (show_index == 1)
-            show_word();
-        if (show_index == 2)
-            show_meaning();
+        show_word();
+        show_meaning();
     }
-
-    function show_entire() {
+    /*
+    function show_both() {
         show_index = 0;
         for (var index = 0; index < table.length; index++) {
             if (index % 2 == 0) {
@@ -126,36 +127,80 @@ $(document).ready(function () {
             }
         }
     }
+    */
 
     function show_word() {
-        show_index = 1;
-        for (var index = 0; index < table.length; index++) {
-            if (index % 2 == 0) {
-                if ((page_index - 1) * 10 + index / 2 < word.length)
-                    table[index].innerText = word[(page_index - 1) * 10 + index / 2];
-                else
-                    table[index].innerText = "";
-            } else
-                table[index].innerText = "";
-        }
-    }
-
-    function show_meaning() {
-        show_index = 2;
-        for (var index = 0; index < table.length; index++) {
-            if (index % 2 == 0)
-                table[index].innerText = "";
-            else {
-                if ((page_index - 1) * 10 + index / 2 < word.length)
-                    table[index].innerText = meaning[(page_index - 1) * 10 + ((index - 1) / 2)];
-                else
+        if (show_word_flag) {
+            for (var index = 0; index < table.length; index++) {
+                if (index % 2 == 0) {
+                    if ((page_index - 1) * (table.length / 2) + index / 2 < word.length)
+                        table[index].innerText = word[(page_index - 1) * (table.length / 2) + index / 2];
+                    else
+                        table[index].innerText = "";
+                }
+            }
+        } else {
+            for (var index = 0; index < table.length; index++) {
+                if (index % 2 == 0)
                     table[index].innerText = "";
             }
         }
     }
 
+    function show_meaning() {
+        if (show_meaning_flag) {
+            for (var index = 0; index < table.length; index++) {
+                if (index % 2 == 1) {
+                    if ((page_index - 1) * (table.length / 2) + index / 2 < word.length)
+                        table[index].innerText = meaning[(page_index - 1) * (table.length / 2) + ((index - 1) / 2)];
+                    else
+                        table[index].innerText = "";
+                }
+            }
+        } else {
+            for (var index = 0; index < table.length; index++) {
+                if (index % 2 == 1)
+                    table[index].innerText = "";
+            }
+        }
+    }
+
+    function change_word_flag() {
+        var btn = document.getElementById("show_word_button");
+        if (show_word_flag) {
+            show_word_flag = false;
+            btn.innerText = "단어 보이기";
+        } else {
+            show_word_flag = true;
+            btn.innerText = "단어 가리기";
+        }
+        show_word();
+    }
+
+    function change_meaning_flag() {
+        var btn = document.getElementById("show_meaning_button");
+        if (show_meaning_flag) {
+            show_meaning_flag = false;
+            btn.innerText = "뜻 보이기";
+        }
+        else {
+            show_meaning_flag = true;
+            btn.innerText = "뜻 가리기";
+        }
+        show_meaning();
+    }
+
     function refresh() {
         window.location.reload();
+    }
+
+    function addClickEvents(i) {
+        return function () {
+            window.speechSynthesis.cancel();
+            var msg = new SpeechSynthesisUtterance(table[i].innerText);
+            msg.lang = 'en-US';
+            window.speechSynthesis.speak(msg);
+        }
     }
 
     // 첫 번째 파일부터 시작
