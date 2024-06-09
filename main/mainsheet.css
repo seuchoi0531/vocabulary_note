@@ -35,6 +35,10 @@ td {
     height: 60px;
 }
 
+footer {
+    margin-bottom: 150px;
+}
+
 footer>div {
     width: 80%;
     margin: 0 auto 5px;
@@ -42,49 +46,6 @@ footer>div {
     text-align: center;
     line-height: 50px;
     position: relative;
-}
-
-#top_footer {
-    margin-top: 5px;
-}
-
-#top_footer>input {
-    display: inline-block;
-    position: absolute;
-}
-
-#left_arrow {
-    width: 25px;
-    height: 36px;
-    background-color: transparent;
-    border-style: none;
-    background-image: url("img/left_arrow.png");
-    background-repeat: no-repeat;
-    left: 100px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-#right_arrow {
-    width: 25px;
-    height: 36px;
-    background-color: transparent;
-    border-style: none;
-    background-image: url("img/right_arrow.png");
-    background-repeat: no-repeat;
-    right: 100px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-#left_arrow:active {
-    background-image: url("img/left_arrow_click.png");
-    top: 60%;
-}
-
-#right_arrow:active {
-    background-image: url("img/right_arrow_click.png");
-    top: 60%;
 }
 
 #bottom_footer {
@@ -123,10 +84,12 @@ footer>div {
 }
 
 nav {
-    width: 80%;
-    margin: 0 auto 5px;
-    height: 50px;
+    width: 100%;
+    margin: 0;
+    height: 150px;
     text-align: center;
+    background-color: rgb(155, 155, 155);
+    border-top: 5px #FFFFFF solid;
     line-height: 50px;
     position: fixed;
     bottom: 0;
@@ -134,8 +97,57 @@ nav {
     transform: translateX(-50%);
 }
 
-nav>button {
-    height: 100%;
+nav>div {
+    width: 80%;
+    margin: 0 auto 5px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    position: relative;
+    margin-top: 5px;
+}
+
+#top_nav>input {
+    display: inline-block;
+    position: absolute;
+}
+
+#left_arrow {
+    width: 25px;
+    height: 36px;
+    background-color: transparent;
+    border-style: none;
+    background-image: url("img/left_arrow.png");
+    background-repeat: no-repeat;
+    left: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#right_arrow {
+    width: 25px;
+    height: 36px;
+    background-color: transparent;
+    border-style: none;
+    background-image: url("img/right_arrow.png");
+    background-repeat: no-repeat;
+    right: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#left_arrow:active {
+    background-image: url("img/left_arrow_click.png");
+    top: 60%;
+}
+
+#right_arrow:active {
+    background-image: url("img/right_arrow_click.png");
+    top: 60%;
+}
+
+#bottom_nav>button {
+    height: 50px;
     width: 40%;
     border-radius: 10px;
     display: inline-block;

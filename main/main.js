@@ -3,7 +3,6 @@ $(document).ready(function () {
     var meaning = []; // meaning array
     var total = [];
     var table = document.getElementsByTagName("td");
-    var show_index = 0;
     var show_word_flag = true;
     var show_meaning_flag = true;
     // 0: show_both
